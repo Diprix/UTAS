@@ -1,0 +1,180 @@
+/**
+    UTAS System stylesheet settings
+ */
+
+.hyperlink {
+    -fx-underline: false;
+    -fx-border-width: 0;
+}
+    .toolBar {
+        -fx-background-color: transparent;
+    }
+
+    .toolBarLogo {
+        -fx-translate-x: 20px;
+        -fx-translate-y: 5px;
+    }
+    
+    .toolBarLogo_back {
+    	-fx-translate-y: -4px;
+    }
+    /* Button settings */
+
+    .blueButton {
+        -fx-padding: 12px 22px 12px 22px;
+        -fx-font-family: Arial, sans-serif;
+        -fx-background-color: #0187ea;
+        -fx-font-size: 12px;
+        -fx-font-weight: bold;
+        -fx-text-fill: #ffffff;
+        -fx-effect: null;
+        -fx-drop-shadow: null;
+    }
+    
+    .blueButton:hover {
+        /*-fx-background-color: #0272c2;*/
+        -fx-background-color: #179cfb;
+        -fx-cursor: hand;
+    }
+
+    .blueButton:pressed {
+        -fx-background-color: #0272c2;
+        -fx-cursor: hand;
+        
+    }
+        .blueButtonTight {
+        -fx-padding: 12px 8px 12px 8px;
+        -fx-font-family: Arial, sans-serif;
+        -fx-background-color: #0187ea;
+        -fx-font-size: 12px;
+        -fx-font-weight: bold;
+        -fx-text-fill: #ffffff;
+        -fx-effect: null;
+        -fx-drop-shadow: null;
+    }
+    
+    .blueButtonTight:hover {
+        /*-fx-background-color: #0272c2;*/
+        -fx-background-color: #179cfb;
+        -fx-cursor: hand;
+    }
+
+    .blueButtonTight:pressed {
+        -fx-background-color: #0272c2;
+        -fx-cursor: hand;
+    }
+    
+    .greyButton {
+         -fx-padding: 12px 22px 12px 22px;
+        -fx-font-family: Arial, sans-serif;
+        -fx-background-color: #aebcc8;
+        -fx-font-size: 12px;
+        -fx-font-weight: bold;
+        -fx-text-fill: #ffffff;
+        -fx-effect: null;
+        -fx-drop-shadow: null;   	
+    }
+    
+    .greyButton:hover {
+        -fx-background-color: #bac9d6;
+        -fx-cursor: hand;
+    }
+
+    .greyButton:pressed {
+        -fx-background-color: #91a3b3;
+        -fx-cursor: hand;
+    }  
+    
+    .date-picker .text-field {
+    -fx-control-inner-background: #ffffff ;
+    -fx-border-width: 0;
+    -fx-text-fill: #8c9fad;
+    -fx-font-size: 16px;
+    -fx-padding: 0 5 0 5;
+        -fx-background-color:
+        -fx-control-inner-background,
+        transparent,
+        linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, 0%), -fx-control-inner-background);
+    -fx-background-insets: 1 0 1 1, 1 0 1 1, 3 2 3 3;
+    -fx-background-radius: 2 0 0 2, 1 0 0 1, 0;
+}  
+
+.date-picker:focused > .text-field,
+.date-picker > .text-field:focused {
+    -fx-background-color:
+        -fx-control-inner-background,
+        transparent,
+        linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, 0%), -fx-control-inner-background);
+    -fx-background-insets: 1 0 1 1, 1 0 1 1, 3 2 3 3;
+    -fx-background-radius: 2 0 0 2, 1 0 0 1, 0;
+}
+
+.date-picker > .menu-button {
+	-fx-background-color: #ff0000;
+}
+
+.date-picker > .arrow-button {
+    -fx-background-color: #ffffff;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.dialog-pane{
+  -fx-border-color:black;
+  -fx-border-width:2.0px;
+ }
+
+/**Costumization of The Bar where the buttons are located**/
+.dialog-pane > .button-bar > .container {
+  -fx-background-color:black;
+}
+
+.dialog-pane > .content.label {
+   -fx-padding: 0.5em 0.5em 0.5em 0.5em;
+   -fx-background-color: yellow;
+   -fx-text-fill:black;
+   -fx-font-size:15.0px;
+}
+
+/**Costumization of DialogPane Header**/
+.dialog-pane:header .header-panel {
+  -fx-background-color: black;
+}
+
+.dialog-pane:header .header-panel .label{
+  -fx-background-color: yellow;
+  -fx-background-radius:10px;
+  -fx-text-fill:black;
+  -fx-font-size:15.0px;
+}
+
+
+/**Costumization of Buttons**/
+.dialog-pane .button{
+   -fx-background-color:black;
+   -fx-text-fill:white;
+   -fx-wrap-text: true;
+   -fx-effect: dropshadow( three-pass-box, yellow, 10.0, 0.0, 0.0, 0.0);
+   -fx-cursor:hand;
+ }
+
+.dialog-pane .button:hover{     
+  -fx-background-color:white;
+  -fx-text-fill:black;
+  -fx-font-weight:bold; 
+ }
+    

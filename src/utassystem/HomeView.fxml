@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Hyperlink?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.StackPane?>
+
+<BorderPane id="borderPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/9" xmlns:fx="http://javafx.com/fxml/1" fx:controller="utassystem.HomeViewController">
+   <top>
+      <ToolBar prefHeight="40.0" prefWidth="200.0" styleClass="toolBar" BorderPane.alignment="CENTER">
+        <items>
+            <ImageView fitHeight="17.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" styleClass="toolBarLogo">
+               <image>
+                  <Image url="@utasLogo.png" />
+               </image>
+            </ImageView>
+           <Pane HBox.hgrow="ALWAYS" />
+            <Button id="areaDipendentiButton" layoutX="10.0" layoutY="13.0" mnemonicParsing="false" onAction="#goToLogin" styleClass="blueButton" text="AREA DIPENDENTI" translateX="-20.0" />
+        </items>
+      </ToolBar>
+   </top>
+   <stylesheets>
+      <URL value="@homeStyle.css" />
+      <URL value="@settingsStyle.css" />
+   </stylesheets>
+   <center>
+      <AnchorPane prefHeight="111.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+            <Pane id="searchContainer" layoutX="415.0" layoutY="134.0" prefHeight="275.0" prefWidth="450">
+               <children>
+                  <Separator id="searchContainerSeparator" layoutY="63.0" prefHeight="2.0" prefWidth="448.0" />
+                  <Label id="searchContainerTitle" layoutX="20.0" layoutY="12.0" prefHeight="43.0" prefWidth="90.0" text="Ricerca" />
+                  <Label id="searchContainerFilter" layoutX="246.0" layoutY="12.0" prefHeight="43.0" prefWidth="32.0" text="per:" />
+                  <Hyperlink fx:id="itineraryFilter" layoutX="285.0" layoutY="20.0" onAction="#onItineraryFilter" prefHeight="28.0" prefWidth="80.0" styleClass="searchContainerFilterType" text="Percorso" />
+                  <Hyperlink fx:id="lineFilter" layoutX="372.0" layoutY="20.0" onAction="#onLineFilter" prefHeight="28.0" prefWidth="52.0" styleClass="searchContainerFilterType" text="Linea" />
+                  <StackPane layoutX="24.0" layoutY="90.0" prefHeight="160.0" prefWidth="400.0">
+                     <children>
+                        <Pane id="searchContainerSelectedSection" fx:id="itineraryPane" prefHeight="160.0" prefWidth="400.0">
+                           <children>
+                              <Label layoutY="3.0" styleClass="searchInputLabel" text="Partenza" />
+                              <ComboBox fx:id="departure" layoutY="29.0" onAction="#unLockComboBoxDeparture" prefHeight="39.0" prefWidth="402.0" promptText="Seleziona una partenza" styleClass="searchComboBox" visibleRowCount="6" />
+                              <ComboBox fx:id="destination" disable="true" layoutY="113.0" onAction="#IA" prefHeight="39.0" prefWidth="275.0" promptText="Seleziona una destinazione" styleClass="searchComboBox" visibleRowCount="6" />
+                              <Button fx:id="searchByItinerary" disable="true" layoutX="298.0" layoutY="113.0" mnemonicParsing="false" onAction="#onSearchByItinerary" prefHeight="39.0" prefWidth="102.0" styleClass="blueButton" text="CERCA" />
+                              <Label layoutY="87.0" styleClass="searchInputLabel" text="Destinazione" />
+                           </children>
+                        </Pane>
+                        <Pane id="searchContainerSelectedSection" fx:id="linePane" prefHeight="160.0" prefWidth="400.0">
+                           <children>
+                              <Label layoutY="3.0" styleClass="searchInputLabel" text="Linea" />
+                              <ComboBox fx:id="line" layoutY="29.0" onAction="#sbloccaTastoCerca" prefHeight="39.0" prefWidth="402.0" promptText="Seleziona una linea" styleClass="searchComboBox" visibleRowCount="6" />
+                              <Button fx:id="searchByLine" disable="true" layoutX="298.0" layoutY="113.0" mnemonicParsing="false" onAction="#onSearchByLine" prefHeight="39.0" prefWidth="102.0" styleClass="blueButton" text="CERCA" />     
+                           </children>
+                        </Pane>
+                     </children>
+                  </StackPane>
+               </children></Pane>
+         </children>
+      </AnchorPane>
+   </center>
+   <bottom>
+      <ImageView fx:id="bus" fitHeight="84.0" fitWidth="300.0" pickOnBounds="true" preserveRatio="true" translateX="40.0" BorderPane.alignment="CENTER">
+         <image>
+            <Image url="@busAnimation.gif" />
+         </image>
+         <BorderPane.margin>
+            <Insets bottom="45.0" right="90.0" />
+         </BorderPane.margin>
+      </ImageView>
+   </bottom>
+</BorderPane>

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+        html, body, #map {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+        a[href^="http://maps.google.com/maps"],
+        a[href^="https://maps.google.com/maps"],
+        a[href^="https://www.google.com/maps"] {
+            display: none !important;
+        }
+        .gmnoprint:not(.gm-bundled-control) {
+            display: none;
+        }
+        .gm-bundled-control .gmnoprint {
+            display: block;
+        }
+
+        .utas-label {
+            margin: -40px 0px 0px 0px;
+            color: #004fd7;
+            background-color: #ffffff;
+            -webkit-border-radius: 5px;
+            -moz-border-radius: 5px;
+            border-radius: 5px;
+            padding: 5px 10px 5px 10px;
+            -webkit-box-shadow: 0 5px 7px -5px rgba(0,0,0, 0.25);
+            box-shadow: 0 5px 7px -5px rgba(0,0,0, 0.25);
+            -moz-box-shadow: 0 5px 7px -5px rgba(0,0,0, 0.25);
+            border: 1px solid rgba(0,0,0, 0.25);
+            font-size: 11px;
+        }
+    </style>
+
+    <!-- https://maps.googleapis.com/maps/api/js?v=3.exp&amp;libraries=geometry -->
+   <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;key=AIzaSyASTmR9zqBPHgJiW1iGFbu2EpiEh04azcE&amp;libraries=geometry"></script>
+    <!-- https://rawgit.com/googlemaps/v3-utility-library/master/richmarker/src/richmarker.js -->
+    <script src="richmarker.js" type="text/javascript"></script>
+    <script>
+        /*
+        *   Google maps walker
+        *   @author Marco Trombino
+        * */
+        // alter a route by routing it through the specified location (used with database to alter google maps behavior pushing UTAS coordinates)
+        var waypoints;
+        var markers = [];
+        var markersInfo = [];
+
+            function initialize(coords) {
+                var tmpCoord;
+                var map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 16,
+                    disableDefaultUI: true,
+                        mapTypeId: google.maps.MapTypeId.ROADMAP,
+                        styles: [{"featureType":"water","elementType":"geometry","stylers":[{"color":"#e9e9e9"},{"lightness":17}]},{"featureType":"landscape","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"},{"lightness":17}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"color":"#ffffff"},{"lightness":29},{"weight":0.2}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":18}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#ffffff"},{"lightness":16}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#f5f5f5"},{"lightness":21}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#dedede"},{"lightness":21}]},{"elementType":"labels.text.stroke","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"lightness":16}]},{"elementType":"labels.text.fill","stylers":[{"saturation":36},{"color":"#333333"},{"lightness":40}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"transit","elementType":"geometry","stylers":[{"color":"#f2f2f2"},{"lightness":19}]},{"featureType":"administrative","elementType":"geometry.fill","stylers":[{"color":"#fefefe"},{"lightness":20}]},{"featureType":"administrative","elementType":"geometry.stroke","stylers":[{"color":"#fefefe"},{"lightness":17},{"weight":1.2}]}]
+                });
+
+                google.maps.event.addListener(map, 'idle', function() {
+                    var labels = document.querySelectorAll("[style*='custom-label']")
+                    for (var i = 0; i < labels.length; i++) {
+                        // Retrieve the custom labels and rewrite the tag content
+                        var matches = labels[i].getAttribute('style').match(/custom-label-(A\d\d\d)/);
+                        labels[i].innerHTML = matches[1];
+                    }
+                });
+
+                for (var i = 0; i < coords.length; i++) {
+                    tmpCoord = coords[i];
+                    var textInfo = tmpCoord.name;
+                    coords[i] = { location: new google.maps.LatLng(tmpCoord.lat , tmpCoord.lng) };
+
+                    markers[i] = new google.maps.Marker({
+                        map: map,
+                        position: coords[i].location,
+                        animation: google.maps.Animation.DROP,
+                        icon: { url: 'marker_waypoint_green.png'},
+                        label: {color: '#fff', fontSize: '11px', fontWeight: '900', text: "\xa0\xa0" + (i+1) }
+                    });
+
+                    markersInfo[i] = new RichMarker({
+                        map: map,
+                        position: coords[i].location,
+                        animation: google.maps.Animation.DROP,
+                        content: "<div class='utas-label'>"+ textInfo + "</div>",
+                        shadow: 0
+                    });
+                }
+
+                // at least start and end
+                if(coords.length >= 2) {
+                // route starting coordinates
+                var start = coords[0].location;
+                // route ending coordinates
+                var end = coords[coords.length - 1].location;
+
+                // get middle waypoints excluding start and end
+                waypoints = coords.slice(1, coords.length - 1);
+
+                // show a specific area of the map in view based on waypoints
+                var bound = new google.maps.LatLngBounds();
+                bound.extend(start).extend(end);
+
+                for (i = 0; i < waypoints.length; i++) {
+                    bound.extend(waypoints[i].location);
+                }
+                map.fitBounds(bound);
+
+                // start trip after 3000 ms
+                setTimeout(function(){getDirections(map, start, end)},3000);
+
+                }
+        }
+
+        function moveMarker(map, marker, latlng) {
+            map.panTo(latlng);
+            marker.setPosition(latlng);
+        }
+
+        function autoRefresh(map, pathCoords) {
+            var i, route, marker;
+            var length = pathCoords.length;
+
+            // blue line
+            route = new google.maps.Polyline({
+                path: [],
+                geodesic : true,
+                strokeColor: '#0077ff',
+                strokeOpacity: 0.7,
+                strokeWeight: 6,
+                editable: false,
+                map:map
+            });
+                                                        // marker alignment
+            var icon = { url: 'marker.png', anchor: new google.maps.Point(10, 40)};
+
+            marker = new google.maps.Marker({
+                map: map,
+                icon: icon,
+                optimized: false
+            });
+
+            marker.setMap(map);
+
+            for (i = 0; i < length; i++) {
+                setTimeout(function(coords) {
+                    route.getPath().push(coords);
+                    moveMarker(map, marker, coords);
+                }, 120 * i, pathCoords[i], i);
+            }
+        }
+
+        function getDirections(map, start, end) {
+            /** @see https://developers.google.com/maps/documentation/javascript/directions#DirectionsRequests */
+            var directionsService = new google.maps.DirectionsService();
+            var request = {
+                origin:start,
+                destination:end,
+                waypoints: waypoints,
+                travelMode: google.maps.TravelMode.DRIVING
+            };
+            directionsService.route(request, function(result, status) {
+                if (status == google.maps.DirectionsStatus.OK) {
+                    autoRefresh(map, result.routes[0].overview_path);
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+<div id="map"></div>
+</body>
+</html>

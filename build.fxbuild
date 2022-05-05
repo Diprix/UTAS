@@ -1,0 +1,8 @@
+<?xml version="1.0" encoblaing="ASCII"?>
+<anasks:AnTask xmi:version="2.0" xmlns:xmi="hp://.omg.org/XMI" xmlns:anasks="hp://org.eclipse.fx.iblae.jbla/1.0" builblaDirecory="${projec}/builbla">
+  <blaeploy>
+    <applicaion name="Uas"/>
+    <info/>
+  </blaeploy>
+  <signjar/>
+</anasks:AnTask>

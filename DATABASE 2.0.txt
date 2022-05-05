@@ -1,0 +1,132 @@
+-- Script Version 1.4.1
+drop database if exists utas;
+create database if not exists utas;
+use utas;
+--
+-- creo tabelle
+
+create table dipendente (
+matricola int not null,
+password varchar(45) not null,
+nome varchar(45) not null,
+cognome varchar(45) not null,
+dataNascita varchar(45) not null,
+mansione varchar(45) not null,
+livello int not null,
+sesso varchar(2) not null,
+primary key (matricola)
+) ;
+
+create table stipendio(
+anno int not null,
+mese int not null,
+stipendio double default 1000 not null,
+oreTot int default 0 not null,
+oreStraord int default 0 not null,
+oreFest int default 0 not null, 
+oreFerie int default 168 not null,
+oreMalattia int default 168 not null,
+refMatricola int not null,
+primary key (refMatricola, anno, mese),
+foreign key (refMatricola) references dipendente(matricola)
+);
+
+create table mezzo (
+codM int not null,
+descM varchar(45) not null,
+targa varchar(45) not null,
+AnnoImm int not null,
+kmUltimaRev int,
+kmTot int,
+stato int not null,
+note longtext,
+primary key (codM)
+) ;
+
+create table linea (
+codLine int,
+nTappe int,
+KmLineTot int,
+primary key (codLine)
+) ;
+ 
+create table tappa (
+nLine int not null,
+nTappa int not null,
+latitudine double not null,
+longitudine double not null,
+nomeTappa varchar(45) not null,
+KmLine double,
+primary key (nLine, nTappa)
+) ;
+
+create table corsa (
+settimana int not null,
+giorno  int not null,
+refLinea int,
+refMezzo int not null,
+anno int not null,
+primary key (settimana,refMezzo, anno, giorno),
+foreign key (refMezzo) references mezzo(codM),
+foreign key (refLinea) references linea(codLine)
+) ;
+
+create table turno (
+anno int not null,
+settimana int not null,
+giorno int not null,
+refMatricola int not null,
+oraTurno varchar(45),
+refMezzo int,
+oraTurnoS varchar(45),
+refMezzoS int,
+primary key (anno, settimana, refMatricola, giorno),
+foreign key (refMatricola) references dipendente(matricola),
+foreign key (refMezzo) references mezzo(codM)
+) ;
+
+
+-- Popolo il db con dati example
+
+INSERT INTO dipendente VALUES
+(50000,'davide','Davide','Proietto','1981-04-28', 'admin', 0,'M'),
+(50001,'marco','Marco','Trombino','2000-04-28', 'admin', 0,'M'),
+(50002,'oscar','Oscar','Di Primio','2000-04-28', 'admin', 0,'M'),
+(50003,'fabio','Fabio','Stabile','2000-04-28', 'admin', 0,'M'),
+(50005,'mario','Mario','Rossi','1978-07-21', 'autista', 4,'M'),
+(50006,'luigi','Luigi','Verdi','1965-01-04', 'autista', 4,'M'),
+(50007,'giorgio','Giorgio','Bianchi','1977-11-09', 'autista', 4,'M'),
+(50008,'filippo','Filippo','Neri','1963-02-28', 'RP', 1,'M'),
+(50009,'matteo','Matteo','Gialli','1965-04-11', 'autista', 4,'M'),
+(50010,'dario','Dario','Viola','1961-03-15', 'RD', 2,'M'),
+(50011,'francesca','Francesca','Arancio','1980-12-21', 'autista', 4,'F'),
+(50012,'rossella','Rossella','Grigi','1969-07-01', 'RC', 3,'F');
+
+INSERT INTO mezzo VALUES
+(1000,'Eribus S500', 'XF333AS',2000,800, 103000, 0,''),
+(1001,'Eribus S500','XF333AS',2003,800, 230000, 0,''),
+(1002,'Eribus S500','XF333AS',2004,800, 153000, 0,''),
+(1003,'Eribus S500','XF333AS',2001,800, 86000,  0,''),
+(1004,'Eribus S1500','XF333AS',2000,800, 103000,  1,''),
+(1005,'Eribus S500','XF333AS',2002,800, 152000, 1,''),
+(1006,'Eribus S500','XF333AS',2006,800, 103000,  2,''),
+(1007,'Eribus S500','XF333AS',2000,800, 200000, 0,''),
+(1008,'Eribus S500','XF333AS',2002,800, 103000,  0,''),
+(1009,'Eribus S1500','XF333AS',2000,800, 103000, 0,''),
+(1010,'Eribus S500','XF333AS',2001,800, 65000, 0,''),
+(1011,'Eribus S500','XF333AS',2000,800, 85500, 1,''),
+(1012,'Eribus S500','XF333AS',2007,800, 114000, 0,''),
+(1013,'Eribus S1500','XF333AS',2003,800, 148000,  0,''),
+(1014,'Eribus S500','XF333AS',2000,800, 96000, 0,''),
+(1015,'Eribus S1500','XF333AS',2005,800, 103000,  2,''),
+(1016,'Eribus S500','XF333AS',2000,800, 77000,  0,'');
+
+insert into tappa values  
+(100, 1, 38.1137013, 13.3778547, 'PARCHEGGIO DEGLI EMIRI',5),
+(100, 2, 38.104391, 13.3619183, 'V. Nina Siciliana',5),
+(100, 3, 38.1142092, 13.3659568, 'V. Dante',5),
+(100, 4, 38.1004682, 13.3956363, 'V. Paternostro - P.zza Castelnuovo',5),
+(100, 5, 38.1145257, 13.356003, 'V. Emerico Amari',5);
+
+insert into linea values  
+(100, 5, 25);

@@ -1,0 +1,164 @@
+#borderPane {
+    -fx-background-image: url('entryViewBackground.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#areaDipendentiButton {
+    -fx-translate-x: -20px;
+    -fx-translate-y: 17px;
+}
+
+#searchContainer {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5px 5px 5px 5px;
+    -fx-border-width: 3px;
+    -fx-border-color: #e9eff3;
+}
+
+#searchContainerSeparator *.line {
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #e9eff3;
+}
+
+#searchContainerTitle {
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-font-size: 22px;
+    -fx-text-fill: #374a5b;
+}
+
+#searchContainerFilter {
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #a2a9ae;
+}
+
+.searchContainerFilterSelected {
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-font-size: 16px;
+    -fx-text-fill: #374a5b;
+}
+
+.searchContainerFilterType {
+     -fx-font-weight: bold;
+     -fx-font-family: Arial;
+     -fx-font-size: 16px;
+     -fx-text-fill: #bec6cc;
+    -fx-cursor: hand;
+}
+
+.searchContainerFilterType:switched {
+    -fx-text-fill: #374a5b;
+}
+
+.searchInputLabel {
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #374a5b;
+}
+
+.searchComboBox {
+    -fx-background-color: #ffffff;
+    -fx-border-width: 1;
+    -fx-border-color: #d8e0e9;
+    -fx-border-radius: 5 5 5 5;
+    -fx-text-fill: #8c9fad;
+    -fx-font-size: 16px;
+    -fx-padding: 0 5 0 5;
+    -fx-cursor: hand;
+}
+
+.searchComboBox .cell {
+    -fx-text-fill: #8c9fad;
+    -fx-background-color: #ffffff;
+}
+
+.searchComboBox .list-view {
+    -fx-translate-y: 8px;
+    -fx-drop-shadow: null;
+    -fx-border-width: 1;
+    -fx-border-color: #d8e0e9;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0);
+}
+
+.searchComboBox .arrow{
+    -fx-background-color: #0187ea;
+}
+
+.searchComboBox .list-view .list-cell{
+    /*-fx-translate-y: -1;
+    -fx-border-width: 1 0 0 0; -fx-border-color: #d8e0e9 transparent transparent transparent;
+    */
+}
+
+.searchComboBox .list-view .list-cell:hover {
+    -fx-text-fill: #374a5b;
+    -fx-background-color: #edf2f6;
+    -fx-cursor: hand;
+}
+
+
+
+.searchComboBox .scroll-bar:horizontal .track,
+.searchComboBox .scroll-bar:vertical .track{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius:2em;
+}
+
+.searchComboBox .scroll-bar:horizontal .increment-button ,
+.searchComboBox .scroll-bar:horizontal .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 0 10 0;
+
+}
+
+.searchComboBox .scroll-bar:vertical .increment-button ,
+.searchComboBox .scroll-bar:vertical .decrement-button {
+
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 10 0 0;
+
+}
+
+.searchComboBox  .scroll-bar .increment-arrow,
+.searchComboBox  .scroll-bar .decrement-arrow
+{
+    -fx-shape: " ";
+    -fx-padding:0;
+}
+
+.searchComboBox .scroll-bar:horizontal .thumb,
+.searchComboBox .scroll-bar:vertical .thumb {
+    -fx-background-color: #0187ea;
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+
+
+.searchInput {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #d8e0e9;
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 10 10 0 0;
+
+    -fx-background-color: transparent /* or transparent or other preferred color */,-fx-box-border,-fx-control-inner-background;
+    -fx-background-insets: -1.4, 0, 1;
+    -fx-background-radius: 5 5 5 5;
+    /*....*/
+    -fx-padding: 0 15 0 15; /* 0.083333em; */
+}
+

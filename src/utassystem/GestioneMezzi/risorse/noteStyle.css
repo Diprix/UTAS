@@ -1,0 +1,181 @@
+#changeDataPanel {
+	-fx-background-color: #ffffff;
+}
+
+#changeDataDay {
+	-fx-text-fill: #0187ea;
+	-fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-font-size: 18px;
+}
+
+.changeDataEmployeeText {
+	-fx-text-fill: #9aadba;
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;	
+}
+
+.changeDataEmployeeInfo {
+	-fx-text-fill: #3e484e;
+	-fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-font-size: 12px;
+}
+
+.changeDataEmployeeComboText {
+	-fx-text-fill: #3e484e;
+	-fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-font-size: 12px;
+}
+
+
+
+.combo-box {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5 5 5 5;
+    -fx-text-fill: #8c9fad;
+    -fx-font-size: 16px;
+    -fx-padding: 0 5 0 5;
+    -fx-cursor: hand;
+    -fx-border-width: 1;
+    -fx-border-color: #d8e0e9;
+}
+
+.combo-box .cell {
+    -fx-text-fill: #8c9fad;
+    -fx-background-color: #ffffff;
+}
+
+.combo-box .list-view {
+    -fx-translate-y: 8px;
+    -fx-drop-shadow: null;
+    -fx-border-width: 1;
+    -fx-border-color: #d8e0e9;
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5 5 5 5;
+    -fx-background-radius: 5 5 5 5;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 4, 0, 0, 0);
+}
+
+.combo-box .arrow{
+    -fx-background-color: #0187ea;
+}
+
+.combo-box .list-view .list-cell{
+    /*-fx-translate-y: -1;
+    -fx-border-width: 1 0 0 0; -fx-border-color: #d8e0e9 transparent transparent transparent;
+    */
+}
+
+.combo-box .list-view .list-cell:hover {
+    -fx-text-fill: #374a5b;
+    -fx-background-color: #edf2f6;
+    -fx-cursor: hand;
+}
+
+
+
+.combo-box .scroll-bar:horizontal .track,
+.combo-box .scroll-bar:vertical .track{
+    -fx-background-color:transparent;
+    -fx-border-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-border-radius:2em;
+}
+
+.combo-box .scroll-bar:horizontal .increment-button ,
+.combo-box .scroll-bar:horizontal .decrement-button {
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 0 10 0;
+
+}
+
+.combo-box .scroll-bar:vertical .increment-button ,
+.combo-box .scroll-bar:vertical .decrement-button {
+
+    -fx-background-color:transparent;
+    -fx-background-radius: 0em;
+    -fx-padding:0 10 0 0;
+
+}
+
+.combo-box  .scroll-bar .increment-arrow,
+.combo-box  .scroll-bar .decrement-arrow
+{
+    -fx-shape: " ";
+    -fx-padding:0;
+}
+
+.combo-box .scroll-bar:horizontal .thumb,
+.combo-box .scroll-bar:vertical .thumb {
+    -fx-background-color: #0187ea;
+    -fx-background-insets: 2, 0, 0;
+    -fx-background-radius: 2em;
+}
+
+
+
+.check-box .box {
+
+-fx-background-color: white;
+-fx-border-color: #dbe2eb;
+-fx-border-radius:3px; 
+
+}
+
+.check-box:selected .mark {
+
+-fx-background-color: white;
+}
+
+.check-box:selected .box {
+
+-fx-background-color: #0187ea;
+-fx-border-color: transparent;
+}
+
+
+
+.searchInput {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 5 5 5 5;
+    -fx-border-width: 1;
+    -fx-border-color: #d8e0e9;
+    -fx-border-radius: 5 5 5 5;
+    -fx-text-fill: #8c9fad;
+    -fx-font-size: 16px;
+    -fx-padding: 0 5 0 5;
+    -fx-drop-shadow: null;
+}
+
+.text-area {
+    -fx-background-insets: 0;
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area:focused .content {
+    -fx-background-color: transparent, white, transparent, white;
+}
+
+.text-area:focused {
+    -fx-highlight-fill: #7ecfff;
+}
+
+.text-area .content {
+    -fx-padding: 10px;
+    -fx-text-fill: gray;
+    -fx-highlight-fill: #7ecfff;
+}
+
+.text-area > .scroll-pane{
+
+-fx-vbar-policy:never; /* Control the vertical ScrollBar (always,needed,never) */
+-fx-hbar-policy:never; /* Control the horizontal ScrollBar (always,needed,never) */
+
+}

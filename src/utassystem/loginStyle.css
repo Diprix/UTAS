@@ -1,0 +1,75 @@
+#borderPane {
+    -fx-background-image: url('entryViewBackground_bottom.png');
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+    -fx-background-size: cover;
+}
+
+#searchContainer {
+    -fx-background-color: #ffffff;
+    -fx-border-radius: 5px 5px 5px 5px;
+    -fx-border-width: 3px;
+    -fx-border-color: #e9eff3;
+}
+
+#searchContainerSeparator *.line {
+    -fx-border-style: solid;
+    -fx-border-width: 0 0 2 0;
+    -fx-border-color: #e9eff3;
+}
+
+#searchContainerTitle {
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-font-size: 22px;
+    -fx-text-fill: #374a5b;
+}
+
+#searchContainerFilter {
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #a2a9ae;
+}
+
+.searchContainerFilterSelected {
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-font-size: 16px;
+    -fx-text-fill: #374a5b;
+}
+
+.searchContainerFilterType {
+     -fx-font-weight: bold;
+     -fx-font-family: Arial;
+     -fx-font-size: 16px;
+     -fx-text-fill: #bec6cc;
+    -fx-cursor: hand;
+}
+
+.searchContainerFilterType:switched {
+    -fx-text-fill: #374a5b;
+}
+
+.searchInputLabel {
+    -fx-font-weight: bold;
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-text-fill: #374a5b;
+}
+
+.searchInput {
+    -fx-background-color: #ffffff;
+    -fx-background-radius: 5 5 5 5;
+    -fx-border-width: 1;
+    -fx-border-color: #d8e0e9;
+    -fx-border-radius: 5 5 5 5;
+    -fx-text-fill: #8c9fad;
+    -fx-font-size: 16px;
+    -fx-padding: 0 5 0 5;
+}
+
+.searchInput:wrong {
+    -fx-background-color: #fee9e9;
+    -fx-border-color: #e3d1d1;
+}

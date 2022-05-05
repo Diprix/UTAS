@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToolBar?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane id="borderPane" maxHeight="720.0" maxWidth="1280.0" minHeight="720.0" minWidth="1280.0" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="utassystem.GestioneDipendenti.controller.EmployeeManagementController">
+   <top>
+      <ToolBar prefHeight="135.0" prefWidth="1280.0" styleClass="toolBar" BorderPane.alignment="CENTER">
+        <items>
+             <Pane prefHeight="20.0" prefWidth="1048.0" HBox.hgrow="ALWAYS">
+               <children>
+                  <VBox layoutX="21.0" layoutY="18.0" prefHeight="96.0" prefWidth="171.0" spacing="20.0">
+                     <children>
+                        <ImageView fitHeight="43.0" fitWidth="81.0" pickOnBounds="true" preserveRatio="true" styleClass="toolBarLogo_back">
+                           <image>
+                              <Image url="@../../utasLogo.png" />
+                           </image>
+                        </ImageView>
+                        <AnchorPane prefHeight="147.0" prefWidth="645.0">
+                           <children>
+                              <Button layoutY="1.0" mnemonicParsing="false" onAction="#changeSceneButtonPressed" prefHeight="39.0" prefWidth="162.0" styleClass="greyButton" text="INDIETRO" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </VBox>
+                  <TextField fx:id="txtSearch" layoutX="1058.0" layoutY="56.0" onKeyReleased="#searchKeyReleased" prefHeight="39.0" prefWidth="191.0" promptText="Cerca" styleClass="searchInput" />
+                  <ComboBox fx:id="cercaPer" layoutX="897.0" layoutY="56.0" maxHeight="39.0" onAction="#autoSearch" prefHeight="39.0" prefWidth="147.0" promptText="CercaPer" styleClass="searchComboBox" />
+                  <Label layoutX="907.0" layoutY="29.0" styleClass="searchInputLabel" text="Cerca Per:" />
+               </children></Pane>
+            
+        </items>
+      </ToolBar>
+   </top>
+   <stylesheets>
+      <URL value="@../risorse/employeeStyle.css" />
+      <URL value="@../../settingsStyle.css" />
+   </stylesheets>
+   <center>
+      <AnchorPane maxHeight="617.0" prefHeight="617.0" prefWidth="1280.0" BorderPane.alignment="CENTER">
+         <children>
+		<TableView fx:id="table" editable="true" layoutX="239.0" layoutY="-4.0" maxHeight="568.0" maxWidth="1019.0" onMouseClicked="#selectUser" prefHeight="568.0" prefWidth="1019.0">
+        <columns>
+          <TableColumn fx:id="columnFirstName" prefWidth="75.0" text="Nome" />
+            <TableColumn fx:id="columnSurname" prefWidth="75.0" text="Cognome" />
+            <TableColumn fx:id="columnPassword" prefWidth="75.0" text="Password" />
+            <TableColumn fx:id="columnSesso" prefWidth="75.0" text="Sesso" />
+            <TableColumn fx:id="columnMatriculation" prefWidth="75.0" text="Matricola" />
+            <TableColumn fx:id="columnDateOfBirth" prefWidth="75.0" text="dataNascita" />
+            <TableColumn fx:id="columnRole" prefWidth="75.0" text="Mansione" />
+        </columns>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
+      </TableView>
+            <ComboBox fx:id="Role" editable="true" layoutX="21.0" layoutY="174.0" maxHeight="39.0" onAction="#automaticLevel" prefHeight="39.0" prefWidth="191.0" promptText="Mansione" styleClass="searchComboBox" />
+            <TextField fx:id="txtFirstName" layoutX="21.0" layoutY="15.0" prefHeight="39.0" prefWidth="191.0" promptText="Nome" styleClass="searchInput" />
+            <TextField fx:id="txtSurname" layoutX="21.0" layoutY="68.0" prefHeight="39.0" prefWidth="191.0" promptText="Cognome" styleClass="searchInput" />
+            <TextField fx:id="txtPassword" layoutX="21.0" layoutY="121.0" prefHeight="39.0" prefWidth="191.0" promptText="Password" styleClass="searchInput" />
+            <TextField fx:id="txtMatriculation" layoutX="21.0" layoutY="280.0" prefHeight="39.0" prefWidth="191.0" promptText="Matricola" styleClass="searchInput" />
+            <DatePicker fx:id="DoB" editable="false" layoutX="21.0" layoutY="334.0" prefHeight="39.0" prefWidth="190.0" promptText="Data di nascita" styleClass="searchComboBox" />
+            <Button fx:id="btnEmptyFields" layoutX="22.0" layoutY="442.0" mnemonicParsing="false" onAction="#vuotaCampi" prefHeight="39.0" prefWidth="86.0" styleClass="blueButtonTight" text="Resetta" />
+            <Button fx:id="btnDelete" layoutX="126.0" layoutY="442.0" mnemonicParsing="false" onAction="#cancellaDipendente" prefHeight="39.0" prefWidth="86.0" styleClass="blueButtonTight" text="Elimina" />
+            <Button fx:id="btnAdd" layoutX="126.0" layoutY="496.0" mnemonicParsing="false" onAction="#nuovoDipendente" prefHeight="39.0" prefWidth="86.0" styleClass="blueButtonTight" text="Aggiungi" />
+            <Button fx:id="btnUpdate" layoutX="22.0" layoutY="496.0" mnemonicParsing="false" onAction="#aggiornaDipendente" prefHeight="39.0" prefWidth="86.0" styleClass="blueButtonTight" text="Aggiorna" />
+            <Label layoutX="21.0" layoutY="406.0" prefHeight="16.0" prefWidth="187.0" styleClass="searchInputLabel" text="Operazioni sul dipendente" />
+            <RadioButton fx:id="rbUomo" layoutX="32.0" layoutY="238.0" mnemonicParsing="false" onAction="#sceltaSessoM" prefHeight="17.0" prefWidth="78.0" text="M" />
+            <RadioButton fx:id="rbDonna" layoutX="134.0" layoutY="238.0" mnemonicParsing="false" onAction="#sceltaSessoF" prefHeight="17.0" prefWidth="83.0" text="F" />
+            <TextField fx:id="level" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="20.0" layoutY="373.0" prefHeight="39.0" prefWidth="191.0" promptText="Password" scaleShape="false" styleClass="searchInput" visible="false" />
+         </children>
+      </AnchorPane>
+   </center>
+</BorderPane>
